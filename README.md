@@ -20,4 +20,8 @@ Uma API de teste que gera relatórios de vendas em formato Excel (.xlsx), usando
 pnpm install
 pnpm dev
 
+---
+## Instalação com Docker
+
+docker compose up --build
 
