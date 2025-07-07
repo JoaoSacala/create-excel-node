@@ -1,0 +1,30 @@
+name: CI - Docker + Vitest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Run Tests in Docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx (para melhor compatibilidade)
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache de dependências Docker (opcional)
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Rodar testes com Docker Compose
+        run: docker-compose run --rm test
