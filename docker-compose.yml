@@ -13,5 +13,5 @@ services:
   test:
     build: .
     command: pnpm test
-    volumes:
-      - .:/app
+    #volumes:
+    #  - .:/app
