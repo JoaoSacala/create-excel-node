@@ -27,4 +27,4 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Rodar testes com Docker Compose
-        run: docker-compose run --rm test
+        run: docker compose run --rm test
