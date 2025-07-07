@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   app:
     build: .
@@ -9,4 +8,10 @@ services:
     volumes:
       - .:/app
     environment:
-      - CHOKIDAR_USEPOLLING=true # segurança extra caso use outra lib que depende disso
+      - CHOKIDAR_USEPOLLING=true
+
+  test:
+    build: .
+    command: pnpm test
+    volumes:
+      - .:/app
